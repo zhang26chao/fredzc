@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	{(template/common/head.html)} 
+	<body>
+		<div class="container">	
+			{(template/common/navigate.html)}  
+		</div>
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						{% for i, row in ipairs(article_list) do %}
+						<article class="post">
+							<header class="entry-header">
+								<h1 class="entry-title">
+									<a href="/article/{{row.path}}">{{row.title}}</a>
+								</h1>
+								<div class="entry-meta">
+									<span class="post-category"><a href="/tag/{{row.name}}">{{row.name}}</a></span>
+									<span class="post-date"><time class="entry-date" datetime="{{row.create_time}}">{{row.publish_year}}-{{row.publish_month}}-{{row.publish_date}}</time></span>
+									<a href="/blog/{{row.id}}_{{row.create_time}}.html#disqus_thread">
+										<span class="disqus-comment-count comments-link" data-disqus-identifier="article-{{row.id}}"></span> 
+									</a>
+								</div>
+							</header>
+							<div class="entry-content clearfix">
+								<p>{*row.summary*}</p>
+								<div class="read-more cl-effect-14">
+									<a href="/article/{{row.path}}" class="more-link">Continue reading <span class="meta-nav">→</span></a>
+								</div>
+							</div>
+						</article>
+						{% end %}
+						{*pagination*}
+					</main>
+					{(template/common/right.html)}  
+				</div>
+			</div>
+		</div>
+		{(template/common/footer.html)}  
+		<!-- Mobile Menu -->
+		{(template/common/mobile.html)}  
+		<script id="dsq-count-scr" src="//fredzhang.disqus.com/count.js" async></script>
+	</body>
+</html>

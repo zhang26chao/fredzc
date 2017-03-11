@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	{% include 'common/head.html' %}
+	<body id="single">
+		<div class="container">	
+			{% include 'common/navigate.html' %} 
+		</div>
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-12">
+						<article class="post post-1">
+							<header class="entry-header">
+								<h1 class="entry-title">
+									{{article_title}}
+								</h1>
+								<div class="entry-meta">
+									<span class="post-category"><a href="/tag/{{category.name}}">{{category.name}}</a></span>
+									<span class="post-date"><time class="entry-date" datetime="{{create_time}}">{{publish_year}}-{{publish_month}}-{{publish_date}}</time></span>
+									<a href="#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="article-{{id}}"></span></a>
+								</div>
+							</header>
+							<div class="entry-content clearfix">
+								{{content|safe}}
+							</div>
+						</article>
+						<article class="post post-1">
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+								//this.page.url = '{{domain}}/blog/{{id}}.html';
+								this.page.identifier = 'article-{{id}}';
+							};
+							(function() {
+								var d = document, s = d.createElement('script');
+								s.src = '//fredzhang.disqus.com/embed.js';
+								s.setAttribute('data-timestamp', +new Date());
+								(d.head || d.body).appendChild(s);
+							})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></article>
+					</main>
+				</div>
+			</div>
+		</div>
+		{% include 'common/footer.html' %}  
+		{% include 'common/mobile.html' %} 
+		<script id="dsq-count-scr" src="//fredzhang.disqus.com/count.js" async></script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<aside class="col-md-4">
+	<div class="widget widget-recent-posts">		
+		<h3 class="widget-title">Recent Posts</h3>		
+		<ul>
+			{% for i, row in ipairs(recent_list) do %}
+			<li>
+				<a href="/article/{{row.path}}">{{row.title}}</a>
+			</li>
+			{% end %}
+		</ul>
+	</div>
+	<div class="widget widget-archives">		
+		<h3 class="widget-title">Archives</h3>		
+		<ul>
+			{% for i, row in ipairs(archives_list) do %}
+			<li>
+				<a href="/article/{{row.publish_year}}/{{row.publish_month}}/">{{row.publish_year}}-{{row.publish_month}}  ({{row.total}})</a>
+			</li>
+			{% end %}
+		</ul>
+	</div>
+
+	<div class="widget widget-category">		
+		<h3 class="widget-title">Category</h3>		
+		<ul>
+			{% for i, row in ipairs(category_list) do %}
+			<li>
+				<a href="/tag/{{row.name}}">{{row.name}} ({{row.total}})</a>
+			</li>
+			{% end %}
+		</ul>
+	</div>
+</aside>
